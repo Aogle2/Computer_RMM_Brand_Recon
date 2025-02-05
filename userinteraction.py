@@ -91,7 +91,6 @@ primary.mainloop()
 
 #Functions that are not apart of the main window but need to be used in there anyway
 
-
 #The main Window that is to be used for well...the presentation.
 
 class MainWindow(tkinter.Tk):
