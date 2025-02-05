@@ -1,9 +1,14 @@
 import tkinter
+from tkinter.tix import Select
+
 import matplotlib.pyplot as plt
 from tkinter import *
 import pandas
 import sqlite3
 import os
+
+from PIL.ImageOps import expand
+from libpasteurize.fixes.fix_future_builtins import expression
 
 #building the main window this will be the main hub for how things are viewed.
 #This is also the first thing that opens.
@@ -97,8 +102,24 @@ class MainWindow(tkinter.Tk):
         self.title("RMM Brand Recon")
         self.geometry("400x300")
 
+        OptionsGiven = ['About me','Vendors',"Manufacturer","Operating System"]
 
+        SelectedOptions = LabelFrame(self,text="Visual Options")
+        SelectedOptions.grid(padx=25,pady=10,ipadx=20,ipady=20,sticky="W")
 
+        self.RadioSelectedValue = StringVar();
+
+        for NewOption in OptionsGiven:
+            SingleRadioButton = Radiobutton(
+                SelectedOptions,
+                text=NewOption,
+                value=NewOption,
+                variable=self.RadioSelectedValue,
+                command=self.printSelectedValue)
+            SingleRadioButton.pack(expand=True,fill='both')
+
+    def printSelectedValue(self):
+        print(self.RadioSelectedValue.get())
 
     # A reusable button
     def newButton(self,parent,text,x,y,command):
@@ -111,14 +132,6 @@ class MainWindow(tkinter.Tk):
         label = Label(parent,text=text)
         label.grid(row=x,column=y)
         return label
-
-    def newFrame(self, notebook, title):
-        frame = Frame(notebook)
-        notebook.add(frame, text=title)
-        return frame #This returns a frame object
-
-    def newRadioBtn(self,parent,text,x,y):
-        radio = Radiobutton
 
 Main = MainWindow()
 
