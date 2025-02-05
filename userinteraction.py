@@ -102,21 +102,24 @@ class MainWindow(tkinter.Tk):
         self.title("RMM Brand Recon")
         self.geometry("400x300")
 
+
+#       Giving options for the radio buttons to be built on.
         OptionsGiven = ['About me','Vendors',"Manufacturer","Operating System"]
 
         SelectedOptions = LabelFrame(self,text="Visual Options")
-        SelectedOptions.grid(padx=20,pady=10,ipadx=20,ipady=16,sticky="W")
+        SelectedOptions.grid(padx=2,pady=10,ipadx=2,ipady=10,sticky="W")
 
         self.RadioSelectedValue = StringVar();
 
         for NewOption in OptionsGiven:
-            SingleRadioButton = Radiobutton(
+            single_radio_button = Radiobutton(
                 SelectedOptions,
                 text=NewOption,
                 value=NewOption,
                 variable=self.RadioSelectedValue,
-                command=self.printSelectedValue)
-            SingleRadioButton.pack(expand=True,fill='both')
+                command=self.printSelectedValue
+            )
+            single_radio_button.pack(expand=True,fill='both')
 
     def printSelectedValue(self):
         print(self.RadioSelectedValue.get())
