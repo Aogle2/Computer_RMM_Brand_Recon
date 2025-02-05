@@ -8,6 +8,7 @@ import os
 #building the main window this will be the main hub for how things are viewed.
 #This is also the first thing that opens.
 #Scaling will screw this up on diffrent platforms.
+"""
 primary = tkinter.Tk()
 primary.geometry('225x175')
 primary.resizable(width=False,height=False)
@@ -81,4 +82,44 @@ def aboutme():
 
 #Keep the main loop going, this does not close until you close the main window.
 primary.mainloop()
+"""
 
+#Functions that are not apart of the main window but need to be used in there anyway
+
+
+#The main Window that is to be used for well...the presentation.
+
+class MainWindow(tkinter.Tk):
+    def __init__(self):
+        super().__init__()
+
+        # root window
+        self.title("RMM Brand Recon")
+        self.geometry("400x300")
+
+
+
+
+    # A reusable button
+    def newButton(self,parent,text,x,y,command):
+        button = tkinter.Button(parent,text=text,command=command)
+        button.grid(row=x,column=y)
+        return button
+
+    #a reusable Label
+    def newLabel(self,parent,text,x,y):
+        label = Label(parent,text=text)
+        label.grid(row=x,column=y)
+        return label
+
+    def newFrame(self, notebook, title):
+        frame = Frame(notebook)
+        notebook.add(frame, text=title)
+        return frame #This returns a frame object
+
+    def newRadioBtn(self,parent,text,x,y):
+        radio = Radiobutton
+
+Main = MainWindow()
+
+Main.mainloop()
