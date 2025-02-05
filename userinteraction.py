@@ -109,7 +109,7 @@ class MainWindow(tkinter.Tk):
         SelectedOptions = LabelFrame(self,text="Visual Options")
         SelectedOptions.grid(padx=2,pady=10,ipadx=2,ipady=10,sticky="W")
 
-        self.RadioSelectedValue = StringVar();
+        self.RadioSelectedValue = StringVar()
 
         for NewOption in OptionsGiven:
             single_radio_button = Radiobutton(
