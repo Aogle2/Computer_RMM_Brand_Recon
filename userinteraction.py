@@ -105,7 +105,7 @@ class MainWindow(tkinter.Tk):
         OptionsGiven = ['About me','Vendors',"Manufacturer","Operating System"]
 
         SelectedOptions = LabelFrame(self,text="Visual Options")
-        SelectedOptions.grid(padx=25,pady=10,ipadx=20,ipady=20,sticky="W")
+        SelectedOptions.grid(padx=20,pady=10,ipadx=20,ipady=16,sticky="W")
 
         self.RadioSelectedValue = StringVar();
 
