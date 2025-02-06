@@ -1,4 +1,5 @@
 import tkinter
+from cProfile import label
 from tkinter.tix import Select
 
 import matplotlib.pyplot as plt
@@ -101,9 +102,23 @@ class MainWindow(tkinter.Tk):
         self.title("RMM Brand Recon")
         self.geometry("400x300")
 
+#       Making more options but this time for the menu bar.
+        MenuOptions = ['File','Help']
+
+        MenuBar = Menu(self)
+        self.config(menu=MenuBar)
+        file = Menu(MenuBar,tearoff=0)
+        MenuBar.add_cascade(label=MenuOptions[0],menu=file)
+        file.add_command(label='Open Database',command="")
+        file.add_separator()
+        file.add_command(label='Exit',command=self.destroy)
+
+
+
+
 
 #       Giving options for the radio buttons to be built on.
-        OptionsGiven = ['About me','Vendors',"Manufacturer","Operating System"]
+        OptionsGiven = ['Vendors',"Manufacturer","Operating System"]
 
         SelectedOptions = LabelFrame(self,text="Visual Options")
         SelectedOptions.grid(padx=2,pady=10,ipadx=2,ipady=10,sticky="W")
@@ -120,21 +135,17 @@ class MainWindow(tkinter.Tk):
             )
             single_radio_button.pack(expand=True,fill='both')
 
+
+
     def printSelectedValue(self):
         print(self.RadioSelectedValue.get())
 
-    # A reusable button
-    def newButton(self,parent,text,x,y,command):
-        button = tkinter.Button(parent,text=text,command=command)
-        button.grid(row=x,column=y)
-        return button
 
-    #a reusable Label
+    #A reusable Label
     def newLabel(self,parent,text,x,y):
         label = Label(parent,text=text)
         label.grid(row=x,column=y)
         return label
 
 Main = MainWindow()
-
 Main.mainloop()
