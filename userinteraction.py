@@ -107,22 +107,34 @@ class MainWindow(tkinter.Tk):
 
         MenuBar = Menu(self)
         self.config(menu=MenuBar)
+
+#       The file menu
         file = Menu(MenuBar,tearoff=0)
         MenuBar.add_cascade(label=MenuOptions[0],menu=file)
         file.add_command(label='Open Database',command="")
         file.add_separator()
         file.add_command(label='Exit',command=self.destroy)
 
+#       The help menu
+        help = Menu(MenuBar,tearoff=0)
+        MenuBar.add_cascade(label=MenuOptions[1],menu=help)
+        help.add_command(label='About',command=self.subWindow)
+
 
 
 #       Giving options for the radio buttons to be built on.
-        OptionsGiven = ['Vendors',"Manufacturer","Operating System"]
+        OptionsGiven = ['No Selection','Vendors',"Manufacturer","Operating System"]
 
         SelectedOptions = LabelFrame(self,text="Visual Options")
         SelectedOptions.grid(padx=2,pady=10,ipadx=2,ipady=10,sticky="W")
 
         self.RadioSelectedValue = StringVar()
 
+#       Set the default option for the radio buttons
+        self.RadioSelectedValue.set('No Selection')
+
+
+#       Creating the options dynamically from a list
         for NewOption in OptionsGiven:
             single_radio_button = Radiobutton(
                 SelectedOptions,
@@ -144,6 +156,15 @@ class MainWindow(tkinter.Tk):
         label = Label(parent,text=text)
         label.grid(row=x,column=y)
         return label
+
+
+#   A Reusable SubWindow
+    def subWindow(self,title = "Sub Window",size = "430x200"):
+        sub = Toplevel(self)
+        sub.geometry(size)
+        sub.title(title)
+
+        return sub
 
 Main = MainWindow()
 Main.mainloop()
