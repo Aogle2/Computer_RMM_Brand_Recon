@@ -92,6 +92,14 @@ primary.mainloop()
 
 #Functions that are not apart of the main window but need to be used in there anyway
 
+# base query from SQLite3
+def basequery(query):
+    cnx = sqlite3.connect("main.db")
+    df = pandas.read_sql(query, cnx)
+    cnx.close()
+    return df
+
+
 #The main Window that is to be used for well...the presentation.
 
 class MainWindow(tkinter.Tk):
@@ -116,9 +124,9 @@ class MainWindow(tkinter.Tk):
         file.add_command(label='Exit',command=self.destroy)
 
 #       The help menu
-        help = Menu(MenuBar,tearoff=0)
-        MenuBar.add_cascade(label=MenuOptions[1],menu=help)
-        help.add_command(label='About',command=self.subWindow)
+        halp = Menu(MenuBar,tearoff=0)
+        MenuBar.add_cascade(label=MenuOptions[1],menu=halp)
+        halp.add_command(label='About',command=self.aboutMe)
 
 
 
@@ -159,12 +167,24 @@ class MainWindow(tkinter.Tk):
 
 
 #   A Reusable SubWindow
-    def subWindow(self,title = "Sub Window",size = "430x200"):
+    def subWindow(self,title = "",size = "430x200"):
         sub = Toplevel(self)
         sub.geometry(size)
         sub.title(title)
-
         return sub
+
+#   Functions for well..adding stuff.
+    def aboutMe(self):
+        aboutme = self.subWindow()
+        aboutme.title('About me')
+        Label(aboutme,text="This just shows some metrics in a set of data").pack()
+        Label(aboutme,text="This is also a demo on showing some metrics in a simple way.").pack()
+
+    def showVendors(self):
+        vendor = self.subWindow()
+        vendor.title('Vendors')
+
+
 
 Main = MainWindow()
 Main.mainloop()
