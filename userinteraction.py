@@ -136,12 +136,12 @@ class MainWindow(tkinter.Tk):
             single_radio_button.pack(expand=True,fill='both')
 
 
-
+#   print the selected value from the radio button.
     def printSelectedValue(self):
         print(self.RadioSelectedValue.get())
 
 
-    #A reusable Label
+#   A reusable Label
     def newLabel(self,parent,text,x,y):
         label = Label(parent,text=text)
         label.grid(row=x,column=y)
