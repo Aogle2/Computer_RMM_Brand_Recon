@@ -179,10 +179,13 @@ class MainWindow(tkinter.Tk):
         aboutme.title('About me')
         Label(aboutme,text="This just shows some metrics in a set of data").pack()
         Label(aboutme,text="This is also a demo on showing some metrics in a simple way.").pack()
+        Button(aboutme,text="Close",command=aboutme.destroy).pack()
 
     def showVendors(self):
-        vendor = self.subWindow()
-        vendor.title('Vendors')
+        pass
+
+        #Still need to figure out this part.
+        #I want to put a plot down on this directly on the main window.
 
 
 
