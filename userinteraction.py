@@ -115,8 +115,6 @@ class MainWindow(tkinter.Tk):
 
 
 
-
-
 #       Giving options for the radio buttons to be built on.
         OptionsGiven = ['Vendors',"Manufacturer","Operating System"]
 
