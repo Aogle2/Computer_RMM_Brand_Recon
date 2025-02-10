@@ -1,3 +1,4 @@
+import platform
 import sqlite3
 import tkinter
 from tkinter import *
@@ -6,16 +7,18 @@ from tkinter.ttk import Notebook
 import pandas
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.pyplot import arrow
+
 
 
 class MainWindow(tkinter.Tk):
     def __init__(self):
         super().__init__()
         self.title("Computer RMM Visual")
-        self.geometry("460x320")
+        self.geometry("460x420")
+        self.resizable(height=False,width=False)
         self.notebook = Notebook(self)
         #self.notebook.grid(row=0,column=10,columnspan=2,sticky="nsew")
+        self.eval('tk::PlaceWindow . center')
 
         #This puts this in teh middle of the window
         self.notebook.pack()
@@ -23,18 +26,31 @@ class MainWindow(tkinter.Tk):
 #       Building the needed Frames
         options_given = ["About","Vendors","Manufacturer","Operating Systems"]
 
-        f1 = self.newFrame(self.notebook,title=options_given[0])
-        f2 = self.newFrame(self.notebook,title=options_given[1])
-        f3 = self.newFrame(self.notebook,title=options_given[2])
-        f4 = self.newFrame(self.notebook,title=options_given[3])
+        self.f1 = self.newFrame(self.notebook,title=options_given[0])
+        self.f2 = self.newFrame(self.notebook,title=options_given[1])
+        self.f3 = self.newFrame(self.notebook,title=options_given[2])
+        self.f4 = self.newFrame(self.notebook,title=options_given[3])
 
 #       Setting up frame1 or "f1"
-        Label(f1,text="This is the default page to start at.").pack()
-        Label(f1,text="This app made and re-built by Aaron Ogle").pack()
-        Label(f1,text="This is a way of showing a dataset using tkinter.").pack()
+        Label(self.f1,text="This is the default page to start at.").pack()
+        Label(self.f1,text="This app made and re-built by Aaron Ogle").pack()
+        Label(self.f1,text="This is a way of showing a dataset using tkinter.").pack()
+        Label(self.f1,text="").pack()
+        Label(self.f1,text=f"OS: {platform.platform()}").pack()
+        Label(self.f1,text=f"Processor: {platform.processor()}").pack()
 
 #       Setting up frame2 or "f2"
-        self.f1c = Canvas(f2, bg="white",relief=RAISED,cursor="dot").pack()
+        fig, ax = plt.subplots()
+        ax.bar(['A','B','C','D'],
+               [10,20,15,25],
+               color=['blue','green','red','purple'])
+
+        ax.set_title("Same Graph")
+        ax.set_xlabel('Catagory')
+        ax.set_ylabel('Value')
+        canvas = FigureCanvasTkAgg(fig,master=self.f2)
+        canvas.draw()
+        canvas.get_tk_widget().pack()
 
 #       Setting up frame3 or "f3"
 
@@ -48,9 +64,6 @@ class MainWindow(tkinter.Tk):
         frame = Frame(notebook)
         notebook.add(frame, text=title)
         return frame  # This returns a frame object
-
-    def newFigure(self):
-        pass
 
     def baseQuery(self,query):
         connection = sqlite3.connect("main.db")

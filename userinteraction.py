@@ -1,6 +1,5 @@
 import tkinter
-from cProfile import label
-from tkinter.tix import Select
+
 
 import matplotlib.pyplot as plt
 from tkinter import *
@@ -8,13 +7,11 @@ import pandas
 import sqlite3
 import os
 
-from PIL.ImageOps import expand
-from libpasteurize.fixes.fix_future_builtins import expression
 
 #building the main window this will be the main hub for how things are viewed.
 #This is also the first thing that opens.
 #Scaling will screw this up on diffrent platforms.
-"""
+
 primary = tkinter.Tk()
 primary.geometry('225x175')
 primary.resizable(width=False,height=False)
@@ -88,112 +85,3 @@ def aboutme():
 
 #Keep the main loop going, this does not close until you close the main window.
 primary.mainloop()
-"""
-
-#Functions that are not apart of the main window but need to be used in there anyway
-
-# base query from SQLite3
-def basequery(query):
-    cnx = sqlite3.connect("main.db")
-    df = pandas.read_sql(query, cnx)
-    cnx.close()
-    return df
-
-def newplot():
-    pass
-
-#The main Window that is to be used for well...the presentation.
-
-class MainWindow(tkinter.Tk):
-    def __init__(self):
-        super().__init__()
-
-        # root window
-        self.title("RMM Brand Recon")
-        self.geometry("420x300")
-
-#       Making more options but this time for the menu bar.
-        MenuOptions = ['File','Help']
-
-        MenuBar = Menu(self)
-        self.config(menu=MenuBar)
-
-#       The file menu
-        file = Menu(MenuBar,tearoff=0)
-        MenuBar.add_cascade(label=MenuOptions[0],menu=file)
-        file.add_command(label='Open Database',command="")
-        file.add_separator()
-        file.add_command(label='Exit',command=self.destroy)
-
-#       The help menu
-        #halp = Menu(MenuBar,tearoff=0)
-        #MenuBar.add_cascade(label=MenuOptions[1],menu=halp)
-        #halp.add_command(label='About',command=self.aboutMe)
-
-
-
-#       Giving options for the radio buttons to be built on.
-        OptionsGiven = ['No Selection','Vendors',"Manufacturer","Operating System","About"]
-
-        SelectedOptions = LabelFrame(self,text="Visual Options")
-        SelectedOptions.grid(padx=2,pady=10,ipadx=2,ipady=10,sticky="W")
-
-        self.RadioSelectedValue = StringVar()
-
-#       Set the default option for the radio buttons
-        self.RadioSelectedValue.set('No Selection')
-
-
-#       Creating the options dynamically from a list
-        for NewOption in OptionsGiven:
-            single_radio_button = Radiobutton(
-                SelectedOptions,
-                text=NewOption,
-                value=NewOption,
-                variable=self.RadioSelectedValue,
-                command=self.printSelectedValue
-            )
-            single_radio_button.pack(expand=True,fill='both')
-
-
-#   print the selected value from the radio button.
-    def printSelectedValue(self):
-        print(self.RadioSelectedValue.get())
-
-        match self.RadioSelectedValue.get():
-            case "About":
-                    self.aboutMe()
-            case "No Selection":
-                    pass
-
-
-#   A reusable Label
-    def newLabel(self,parent,text,x,y):
-        label = Label(parent,text=text)
-        label.grid(row=x,column=y)
-        return label
-
-
-#   A Reusable SubWindow
-    def subWindow(self,title = "",size = "430x200"):
-        sub = Toplevel(self)
-        sub.geometry(size)
-        sub.title(title)
-        return sub
-
-#   Functions for well..adding stuff.
-    def aboutMe(self):
-        Label(self,text="""This just shows some metrics in a set of data
-        This is also a demo on showing some metrics in a simple way.""").grid(row=1,column=0)
-
-
-    def showVendors(self):
-        pass
-
-        #Still need to figure out this part.
-        #I want to put a plot down on this directly on the main window.
-
-
-
-Main = MainWindow()
-Main.mainloop()
