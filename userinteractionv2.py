@@ -6,6 +6,7 @@ from tkinter.ttk import Notebook
 import pandas
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.pyplot import arrow
 
 
 class MainWindow(tkinter.Tk):
@@ -15,6 +16,8 @@ class MainWindow(tkinter.Tk):
         self.geometry("460x320")
         self.notebook = Notebook(self)
         #self.notebook.grid(row=0,column=10,columnspan=2,sticky="nsew")
+
+        #This puts this in teh middle of the window
         self.notebook.pack()
 
 #       Building the needed Frames
@@ -31,7 +34,7 @@ class MainWindow(tkinter.Tk):
         Label(f1,text="This is a way of showing a dataset using tkinter.").pack()
 
 #       Setting up frame2 or "f2"
-        Canvas(f2, bg="yellow", height=250, width=300).pack()
+        self.f1c = Canvas(f2, bg="white",relief=RAISED,cursor="dot").pack()
 
 #       Setting up frame3 or "f3"
 
