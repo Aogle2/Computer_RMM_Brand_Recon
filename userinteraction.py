@@ -99,6 +99,8 @@ def basequery(query):
     cnx.close()
     return df
 
+def newplot():
+    pass
 
 #The main Window that is to be used for well...the presentation.
 

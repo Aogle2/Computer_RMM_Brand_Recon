@@ -4,7 +4,8 @@ from tkinter import *
 from tkinter.ttk import Notebook
 
 import pandas
-from matplotlib.pyplot import new_figure_manager, title
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 class MainWindow(tkinter.Tk):
@@ -13,7 +14,8 @@ class MainWindow(tkinter.Tk):
         self.title("Computer RMM Visual")
         self.geometry("460x320")
         self.notebook = Notebook(self)
-        self.notebook.grid(row=0,column=10,columnspan=2,sticky="nsew")
+        #self.notebook.grid(row=0,column=10,columnspan=2,sticky="nsew")
+        self.notebook.pack()
 
 #       Building the needed Frames
         options_given = ["About","Vendors","Manufacturer","Operating Systems"]
