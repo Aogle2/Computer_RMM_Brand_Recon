@@ -108,7 +108,7 @@ class MainWindow(tkinter.Tk):
 
         # root window
         self.title("RMM Brand Recon")
-        self.geometry("400x300")
+        self.geometry("420x300")
 
 #       Making more options but this time for the menu bar.
         MenuOptions = ['File','Help']
@@ -124,14 +124,14 @@ class MainWindow(tkinter.Tk):
         file.add_command(label='Exit',command=self.destroy)
 
 #       The help menu
-        halp = Menu(MenuBar,tearoff=0)
-        MenuBar.add_cascade(label=MenuOptions[1],menu=halp)
-        halp.add_command(label='About',command=self.aboutMe)
+        #halp = Menu(MenuBar,tearoff=0)
+        #MenuBar.add_cascade(label=MenuOptions[1],menu=halp)
+        #halp.add_command(label='About',command=self.aboutMe)
 
 
 
 #       Giving options for the radio buttons to be built on.
-        OptionsGiven = ['No Selection','Vendors',"Manufacturer","Operating System"]
+        OptionsGiven = ['No Selection','Vendors',"Manufacturer","Operating System","About"]
 
         SelectedOptions = LabelFrame(self,text="Visual Options")
         SelectedOptions.grid(padx=2,pady=10,ipadx=2,ipady=10,sticky="W")
@@ -158,6 +158,12 @@ class MainWindow(tkinter.Tk):
     def printSelectedValue(self):
         print(self.RadioSelectedValue.get())
 
+        match self.RadioSelectedValue.get():
+            case "About":
+                    self.aboutMe()
+            case "No Selection":
+                    pass
+
 
 #   A reusable Label
     def newLabel(self,parent,text,x,y):
@@ -175,11 +181,9 @@ class MainWindow(tkinter.Tk):
 
 #   Functions for well..adding stuff.
     def aboutMe(self):
-        aboutme = self.subWindow()
-        aboutme.title('About me')
-        Label(aboutme,text="This just shows some metrics in a set of data").pack()
-        Label(aboutme,text="This is also a demo on showing some metrics in a simple way.").pack()
-        Button(aboutme,text="Close",command=aboutme.destroy).pack()
+        Label(self,text="""This just shows some metrics in a set of data
+        This is also a demo on showing some metrics in a simple way.""").grid(row=1,column=0)
+
 
     def showVendors(self):
         pass
