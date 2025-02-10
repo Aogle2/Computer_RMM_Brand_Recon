@@ -31,10 +31,12 @@ class MainWindow(tkinter.Tk):
         Label(f1,text="This is a way of showing a dataset using tkinter.").pack()
 
 #       Setting up frame2 or "f2"
+        Canvas(f2, bg="yellow", height=250, width=300).pack()
 
 #       Setting up frame3 or "f3"
 
 #       Setting up frame4 or "f4"
+
 
 
 #       A reusable Frame, this is used with a notebook.
@@ -52,6 +54,9 @@ class MainWindow(tkinter.Tk):
         df = pandas.read_sql(query,connection)
         connection.close()
         return df
+
+    def newPlot(self):
+        pass
 
 App = MainWindow()
 App.mainloop()
