@@ -1,4 +1,4 @@
-## This is the old project.
+## This is the old project
 userinteractionv2.py is the rebuilt version that is in progress.
 
 I want to keep this here as a reminder to myself and to show others that you can always improve no matter what is being built.
