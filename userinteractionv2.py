@@ -7,7 +7,6 @@ from tkinter.ttk import Notebook
 import pandas
 import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib.backend_tools import cursors
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
