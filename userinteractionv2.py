@@ -7,6 +7,7 @@ from tkinter.ttk import Notebook
 import pandas
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.backend_tools import cursors
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
@@ -55,6 +56,8 @@ class MainWindow(tkinter.Tk):
         canvas.get_tk_widget().pack()
 
 #       Setting up frame3 or "f3"
+        stuff = {"A": 10,'B':20,'C':15,"D":25}
+        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value",parent=self.f3,**stuff)
 
 #       Setting up frame4 or "f4"
 
@@ -73,7 +76,7 @@ class MainWindow(tkinter.Tk):
         connection.close()
         return df
 
-    def newPlot(self,title,xlabel,ylabel,**data):
+    def newPlot(self,title,xlabel,ylabel,parent,**data):
         fig, ax = plt.subplots()
         #Work on randomizing colors.
         ax.bar(x=pd.Series(list(data.keys())),
@@ -83,7 +86,7 @@ class MainWindow(tkinter.Tk):
         ax.set_title(title)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
-        canvas = FigureCanvasTkAgg(fig, master=self)
+        canvas = FigureCanvasTkAgg(fig, master=parent)
         canvas.draw()
         canvas.get_tk_widget().pack()
 
