@@ -76,6 +76,7 @@ class MainWindow(tkinter.Tk):
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
         canvas = FigureCanvasTkAgg(fig, master=parent)
+        fig.tight_layout()
         canvas.draw()
         canvas.get_tk_widget().pack()
 
