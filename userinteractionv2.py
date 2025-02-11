@@ -85,14 +85,17 @@ class MainWindow(tkinter.Tk):
 
     def platformcheck(self):
         configuration = {
-            'Darwin' : ["800x640"],
-            'Default' : ['640x420']
+            'Darwin' : "800x640",
+            'Linux' : "800x640",
+            'Default' : "640x420"
 
         }
         match platform.system():
             case 'Darwin':
-                print("This is a mac based Device., I will need to adjust to 800x640")
+                print(f"This is a mac based Device., I will need to adjust to {configuration['Darwin']}")
                 self.geometry("800x640")
+            case 'Linux':
+                print(f"This is a linux device, the window will be set to {configuration['Linux']}")
             case _:
                 print("Default will be set as I can't identify this platform")
                 self.geometry('640x420')
