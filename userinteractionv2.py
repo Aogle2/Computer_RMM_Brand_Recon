@@ -18,7 +18,6 @@ class MainWindow(tkinter.Tk):
         self.platformcheck()
         self.resizable(height=False,width=False)
         self.notebook = Notebook(self)
-        #self.notebook.grid(row=0,column=10,columnspan=2,sticky="nsew")
         self.eval('tk::PlaceWindow . center')
 
         #This puts this in teh middle of the window
@@ -85,6 +84,11 @@ class MainWindow(tkinter.Tk):
         canvas.get_tk_widget().pack()
 
     def platformcheck(self):
+        configuration = {
+            'Darwin' : ["800x640"],
+            'Default' : ['640x420']
+
+        }
         match platform.system():
             case 'Darwin':
                 print("This is a mac based Device., I will need to adjust to 800x640")
