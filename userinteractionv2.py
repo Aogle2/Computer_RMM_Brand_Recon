@@ -15,7 +15,7 @@ class MainWindow(tkinter.Tk):
     def __init__(self):
         super().__init__()
         self.title("Computer RMM Visual")
-        self.geometry("640x480")
+        self.platformcheck()
         self.resizable(height=False,width=False)
         self.notebook = Notebook(self)
         #self.notebook.grid(row=0,column=10,columnspan=2,sticky="nsew")
@@ -84,7 +84,14 @@ class MainWindow(tkinter.Tk):
         canvas.draw()
         canvas.get_tk_widget().pack()
 
-
+    def platformcheck(self):
+        match platform.system():
+            case 'Darwin':
+                print("This is a mac based Device., I will need to adjust to 800x640")
+                self.geometry("800x640")
+            case _:
+                print("Default will be set as I can't identify this platform")
+                self.geometry('640x420')
 
 
 App = MainWindow()
