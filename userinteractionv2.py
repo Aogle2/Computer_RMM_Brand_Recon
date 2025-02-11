@@ -6,6 +6,7 @@ from tkinter.ttk import Notebook
 
 import pandas
 import matplotlib.pyplot as plt
+import pandas as pd
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
@@ -40,9 +41,10 @@ class MainWindow(tkinter.Tk):
         Label(self.f1,text=f"Processor: {platform.processor()}").pack()
 
 #       Setting up frame2 or "f2"
+        #Maybe this can be a sub method in a sub method.
         fig, ax = plt.subplots()
-        ax.bar(['A','B','C','D'],
-               [10,20,15,25],
+        ax.bar(x=['A','B','C','D'],
+               height=[10,20,15,25],
                color=['blue','green','red','purple'])
 
         ax.set_title("Same Graph")
@@ -71,8 +73,22 @@ class MainWindow(tkinter.Tk):
         connection.close()
         return df
 
-    def newPlot(self):
-        pass
+    def newPlot(self,title,xlabel,ylabel,**data):
+        fig, ax = plt.subplots()
+        #Work on randomizing colors.
+        ax.bar(x=pd.Series(list(data.keys())),
+               height=pd.Series(list(data.values())),
+               color=['blue', 'green', 'red', 'purple'])
+
+        ax.set_title(title)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        canvas = FigureCanvasTkAgg(fig, master=self)
+        canvas.draw()
+        canvas.get_tk_widget().pack()
+
+
+
 
 App = MainWindow()
 App.mainloop()
