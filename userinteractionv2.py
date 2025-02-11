@@ -41,18 +41,8 @@ class MainWindow(tkinter.Tk):
         Label(self.f1,text=f"Processor: {platform.processor()}").pack()
 
 #       Setting up frame2 or "f2"
-        #Maybe this can be a sub method in a sub method.
-        fig, ax = plt.subplots()
-        ax.bar(x=['A','B','C','D'],
-               height=[10,20,15,25],
-               color=['blue','green','red','purple'])
-
-        ax.set_title("Same Graph")
-        ax.set_xlabel('Catagory')
-        ax.set_ylabel('Value')
-        canvas = FigureCanvasTkAgg(fig,master=self.f2)
-        canvas.draw()
-        canvas.get_tk_widget().pack()
+        stuff2 = {"A": 10, 'B': 20, 'C': 15, "D": 25}
+        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, **stuff2)
 
 #       Setting up frame3 or "f3"
         stuff = {"A": 10,'B':20,'C':15,"D":25}
