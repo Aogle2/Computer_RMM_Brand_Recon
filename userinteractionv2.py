@@ -15,7 +15,7 @@ class MainWindow(tkinter.Tk):
     def __init__(self):
         super().__init__()
         self.title("Computer RMM Visual")
-        self.geometry("460x420")
+        self.geometry("640x480")
         self.resizable(height=False,width=False)
         self.notebook = Notebook(self)
         #self.notebook.grid(row=0,column=10,columnspan=2,sticky="nsew")
@@ -68,9 +68,13 @@ class MainWindow(tkinter.Tk):
     def newPlot(self,title,xlabel,ylabel,parent,**data):
         fig, ax = plt.subplots()
         #Work on randomizing colors.
-        ax.bar(x=pd.Series(list(data.keys())),
+        bars = ax.bar(x=pd.Series(list(data.keys())),
                height=pd.Series(list(data.values())),
                color=['blue', 'green', 'red', 'purple'])
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate(f'{height}', xy=(bar.get_x() + bar.get_width() / 2, height), xytext=(0, 2),
+                        textcoords='offset points', ha='center', va='bottom')
 
         ax.set_title(title)
         ax.set_xlabel(xlabel)
