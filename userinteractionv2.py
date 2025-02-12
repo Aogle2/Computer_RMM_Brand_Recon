@@ -54,7 +54,8 @@ class MainWindow(tkinter.Tk):
 
 #       Log Testing
     def tab_change(self,event):
-        print(f"Tab index: {self.notebook.index(self.notebook.select())} or {self.notebook.tab(self.notebook.select(),'text')} has been selected")
+        print(f"Tab index: {self.notebook.index(self.notebook.select())} or"
+              f" \"{self.notebook.tab(self.notebook.select(),'text')}\" has been selected")
 
 #       A reusable Frame, this is used with a notebook.
 #       There only really needs to be one for this project.
