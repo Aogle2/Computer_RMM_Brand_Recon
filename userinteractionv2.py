@@ -47,13 +47,14 @@ class MainWindow(tkinter.Tk):
         self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, **stuff2)
 
 #       Setting up frame3 or "f3"
-        stuff = {"A": 10,'B':20,'C':15,"D":25}
+        stuff = {"This thing": 10,'That thing':20,'Bleh':15,"D":25}
         self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value",parent=self.f3,**stuff)
 
 #       Setting up frame4 or "f4"
 
 
-#       Log Testing
+#       Log Testing, I want to see if I can make the window change based on teh size of teh content in each tab.
+#       Testing logs and stuff.
     def tab_change(self,event):
         tab_id = self.notebook.index((self.notebook.select()))
         tab_name = self.notebook.tab(tab_id,'text')
@@ -68,12 +69,16 @@ class MainWindow(tkinter.Tk):
         notebook.add(frame, text=title)
         return frame  # This returns a frame object
 
+#   The base query that gets returned as a data frame.
     def baseQuery(self,query):
         connection = sqlite3.connect("main.db")
         df = pandas.read_sql(query,connection)
         connection.close()
         return df
 
+
+#   The plotting method, this is called at the very start of the application loading.
+#   The method will later on accept a python DF for the things that it needs instead of a dictionary
     def newPlot(self,title,xlabel,ylabel,parent,**data):
         fig, ax = plt.subplots()
         #Work on randomizing colors.
