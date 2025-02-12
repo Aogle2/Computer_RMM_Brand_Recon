@@ -22,6 +22,8 @@ class MainWindow(tkinter.Tk):
 
         #This puts this in teh middle of the window
         self.notebook.pack()
+#       testing the event logger.
+        self.notebook.bind("<<NotebookTabChanged>>",self.tab_change)
 
 #       Building the needed Frames
         options_given = ["About","Vendors","Manufacturer","Operating Systems"]
@@ -50,6 +52,9 @@ class MainWindow(tkinter.Tk):
 #       Setting up frame4 or "f4"
 
 
+#       Log Testing
+    def tab_change(self,event):
+        print(f"Tab index: {self.notebook.index(self.notebook.select())} or {self.notebook.tab(self.notebook.select(),'text')} has been selected")
 
 #       A reusable Frame, this is used with a notebook.
 #       There only really needs to be one for this project.
@@ -88,17 +93,13 @@ class MainWindow(tkinter.Tk):
             'Darwin' : "800x640",
             'Linux' : "720x540",
             'Default' : "640x420"
-
         }
         match platform.system():
             case 'Darwin':
-                print(f"This is a mac based Device., I will need to adjust to {configuration['Darwin']}")
                 self.geometry(configuration['Darwin'])
             case 'Linux':
-                print(f"This is a linux device, the window will be set to {configuration['Linux']}")
                 self.geometry(configuration['Linux'])
             case _:
-                print("Default will be set as I can't identify this platform")
                 self.geometry(configuration['Default'])
 
 
