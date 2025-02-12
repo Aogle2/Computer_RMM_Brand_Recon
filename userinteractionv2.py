@@ -7,6 +7,7 @@ from tkinter.ttk import Notebook
 import pandas
 import matplotlib.pyplot as plt
 import pandas as pd
+from PIL.ImageOps import expand
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
@@ -21,7 +22,7 @@ class MainWindow(tkinter.Tk):
         self.eval('tk::PlaceWindow . center')
 
         #This puts this in teh middle of the window
-        self.notebook.pack()
+        self.notebook.pack(expand=True,fill='both')
 #       testing the event logger.
         self.notebook.bind("<<NotebookTabChanged>>",self.tab_change)
 
