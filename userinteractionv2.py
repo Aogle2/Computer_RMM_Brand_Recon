@@ -80,6 +80,9 @@ class MainWindow(tkinter.Tk):
 
 #   The plotting method, this is called at the very start of the application loading.
 #   The method will later on accept a python DF for the things that it needs instead of a dictionary
+
+#   Work in a way to gather the xlabel and ylabel from the DF if it is not already set.
+
     def newPlot(self,title,xlabel,ylabel,parent,xdata,ydata):
         fig, ax = plt.subplots()
         #Work on randomizing colors.
