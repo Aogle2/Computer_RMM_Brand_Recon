@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from PIL.ImageOps import expand
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
+from packaging.utils import canonicalize_version
 
 
 class MainWindow(tkinter.Tk):
@@ -101,6 +101,7 @@ class MainWindow(tkinter.Tk):
         fig.tight_layout()
         canvas.draw()
         canvas.get_tk_widget().pack()
+
 
     def platformcheck(self):
         configuration = {
