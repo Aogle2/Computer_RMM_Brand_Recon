@@ -35,6 +35,7 @@ class MainWindow(tkinter.Tk):
         self.f4 = self.newFrame(self.notebook,title=options_given[3])
 
 #       Setting up frame1 or "f1"
+        Button(self.f1,text="Refresh").pack()
         Label(self.f1,text="This is the default page to start at.").pack()
         Label(self.f1,text="This app made and re-built by Aaron Ogle").pack()
         Label(self.f1,text="This is a way of showing a dataset using tkinter.").pack()
@@ -44,11 +45,11 @@ class MainWindow(tkinter.Tk):
 
 #       Setting up frame2 or "f2"
         stuff2 = {"A": 10, 'B': 20, 'C': 15, "D": 25}
-        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, **stuff2)
+        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=pd.Series(list(stuff2.keys())),ydata=pd.Series(list(stuff2.values())))
 
 #       Setting up frame3 or "f3"
         stuff = {"This thing": 10,'That thing':20,'Bleh':15,"D":25}
-        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value",parent=self.f3,**stuff)
+        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value",parent=self.f3,xdata=pd.Series(list(stuff.keys())),ydata=pd.Series(list(stuff.values())))
 
 #       Setting up frame4 or "f4"
 
@@ -79,11 +80,11 @@ class MainWindow(tkinter.Tk):
 
 #   The plotting method, this is called at the very start of the application loading.
 #   The method will later on accept a python DF for the things that it needs instead of a dictionary
-    def newPlot(self,title,xlabel,ylabel,parent,**data):
+    def newPlot(self,title,xlabel,ylabel,parent,xdata,ydata):
         fig, ax = plt.subplots()
         #Work on randomizing colors.
-        bars = ax.bar(x=pd.Series(list(data.keys())),
-               height=pd.Series(list(data.values())),
+        bars = ax.bar(x=xdata,
+               height=ydata,
                color=['blue', 'green', 'red', 'purple'])
         for bar in bars:
             height = bar.get_height()
