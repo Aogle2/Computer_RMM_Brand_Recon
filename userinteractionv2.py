@@ -19,6 +19,7 @@ class MainWindow(tkinter.Tk):
         self.notebook = Notebook(self)
         self.eval('tk::PlaceWindow . center')
 
+
         #This puts this in teh middle of the window
         self.notebook.pack(expand=True,fill='both')
 #       testing the event logger.
@@ -34,12 +35,13 @@ class MainWindow(tkinter.Tk):
 
 #       Setting up frame1 or "f1"
 
+    #   Setting up labelFrame for frame1
         lf1 = LabelFrame(self.f1,text="Introduction")
         Label(lf1,text="This is the default page to start at.").grid(row=0,column=0)
         Label(lf1,text="This app made and re-built by Aaron Ogle").grid(row=1,column=0)
         Label(lf1,text="This is a way of showing a dataset using tkinter.").grid(row=2,column=0)
         lf1.grid(row=0,column=0,pady=10,padx=10)
-
+    #   Setting up labelFrame 2 for frame1
         lf11= LabelFrame(self.f1,text='Computer Specs and Info')
         Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
         Label(lf11,text=f"Memory: {round(psutil.virtual_memory().total/(1024 * 1024),0)} MB").pack()
