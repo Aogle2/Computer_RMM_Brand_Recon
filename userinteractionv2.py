@@ -4,7 +4,7 @@ import tkinter
 from tkinter import *
 from tkinter.ttk import Notebook
 
-import psutil
+import cpuinfo
 import matplotlib.pyplot as plt
 import pandas as pd
 from PIL.ImageOps import expand
@@ -36,15 +36,16 @@ class MainWindow(tkinter.Tk):
 
 #       Setting up frame1 or "f1"
 
-        lf1 = LabelFrame(self.f1,text="Basic Info")
+        lf1 = LabelFrame(self.f1,text="Introduction")
         #Button(lf,text="Refresh").pack()
         Label(lf1,text="This is the default page to start at.").pack()
         Label(lf1,text="This app made and re-built by Aaron Ogle").pack()
         Label(lf1,text="This is a way of showing a dataset using tkinter.").pack()
-        Label(lf1,text="").pack()
-        Label(lf1,text=f"OS: {platform.platform()}").pack()
-        Label(lf1,text=f"Processor: {platform.processor()}").pack()
-        lf1.grid(row=0,column=0)
+        lf1.grid(row=0,column=0,pady=10,padx=10)
+
+        lf11= LabelFrame(self.f1,text='Computer Specs and Info')
+        Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
+        lf11.grid(row=1,column=0,pady=10,padx=10)
 
 #       Setting up frame2 or "f2"
         stuff2 = {"A": 10, 'B': 20, 'C': 15, "D": 25}
