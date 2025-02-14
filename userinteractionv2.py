@@ -86,6 +86,12 @@ class MainWindow(tkinter.Tk):
         connection.close()
         return df
 
+    def baseInsert(self,query):
+        connection = sqlite3.connect("main.db")
+        cur = connection.cursor()
+        cur.execute(query)
+        return cur.lastrowid
+
 
 #   The plotting method, this is called at the very start of the application loading.
 #   The method will later on accept a python DF for the things that it needs instead of a dictionary
