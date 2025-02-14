@@ -112,7 +112,7 @@ class MainWindow(tkinter.Tk):
 
     def platformcheck(self):
         configuration = {
-            'Darwin' : "800x640",
+            'Darwin' : "1280x720", # Need to do more testing with this res.
             'Linux' : "720x540",
             'Default' : "640x420"
         }
