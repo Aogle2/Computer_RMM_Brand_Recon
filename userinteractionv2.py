@@ -116,6 +116,7 @@ class MainWindow(tkinter.Tk):
         configuration = {
             'Darwin' : "1280x720", # Need to do more testing with this res.
             'Linux' : "720x540",
+            'Windows': "720x540",
             'Default' : "640x420"
         }
         match platform.system():
@@ -123,6 +124,8 @@ class MainWindow(tkinter.Tk):
                 self.geometry(configuration['Darwin'])
             case 'Linux':
                 self.geometry(configuration['Linux'])
+            case 'Windows':
+                self.geometry(configuration['Windows'])
             case _:
                 self.geometry(configuration['Default'])
 
