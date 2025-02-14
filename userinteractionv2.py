@@ -7,6 +7,7 @@ from tkinter.ttk import Notebook
 import cpuinfo
 import matplotlib.pyplot as plt
 import pandas as pd
+import psutil
 from PIL.ImageOps import expand
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from packaging.utils import canonicalize_version
@@ -45,6 +46,8 @@ class MainWindow(tkinter.Tk):
 
         lf11= LabelFrame(self.f1,text='Computer Specs and Info')
         Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
+        Label(lf11,text=f"Memory: {round(psutil.virtual_memory().total/(1024 * 1024),0)} MB").pack()
+        Label(lf11,text=f"Disk: ").pack()
         lf11.grid(row=1,column=0,pady=10,padx=10)
 
 #       Setting up frame2 or "f2"
