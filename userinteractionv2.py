@@ -8,12 +8,7 @@ import cpuinfo
 import matplotlib.pyplot as plt
 import pandas as pd
 import psutil
-from PIL.ImageOps import expand
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from packaging.utils import canonicalize_version
-
-from userinteraction import basequery
-
 
 class MainWindow(tkinter.Tk):
     def __init__(self):
@@ -57,7 +52,7 @@ class MainWindow(tkinter.Tk):
         self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=pd.Series(list(stuff2.keys())),ydata=pd.Series(list(stuff2.values())))
 
 #       Setting up frame3 or "f3"
-        stuff = basequery("SELECT * FROM manufacturer_view ORDER BY count ASC LIMIT 4;")
+        stuff = self.baseQuery("SELECT * FROM manufacturer_view ORDER BY count ASC LIMIT 4;")
         self.newPlot(title="Test Graph", xlabel=f"Manufacturer", ylabel="Value",parent=self.f3,xdata=stuff['Vendor Name'].astype(str),ydata=stuff['Count'])
 
 #       Setting up frame4 or "f4"
