@@ -42,7 +42,7 @@ class MainWindow(tkinter.Tk):
         Label(lf1,text="This is a way of showing a dataset using tkinter.").grid(row=2,column=0)
         lf1.grid(row=0,column=0,pady=10,padx=10)
     #   Setting up labelFrame 2 for frame1
-        lf11= LabelFrame(self.f1,text='Computer Specs and Info')
+        lf11= LabelFrame(self.f1,text='Basic PC Info')
         Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
         Label(lf11,text=f"Memory: {round(psutil.virtual_memory().total/(1024 * 1024),0)} MB").pack()
         Label(lf11,text=f"OS type: {platform.system()}").pack()
@@ -84,7 +84,6 @@ class MainWindow(tkinter.Tk):
         df = pd.read_sql(query,connection)
         connection.close()
         return df
-
 
 
 #   The plotting method, this is called at the very start of the application loading.
