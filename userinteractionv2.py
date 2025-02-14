@@ -96,7 +96,7 @@ class MainWindow(tkinter.Tk):
         #Work on randomizing colors.
         bars = ax.bar(x=xdata,
                height=ydata,
-               color=['blue', 'green', 'red', 'purple'])
+               color=['blue', 'green', 'red', 'purple','black','grey'])
         for bar in bars:
             height = bar.get_height()
             ax.annotate(f'{height}', xy=(bar.get_x() + bar.get_width() / 2, height), xytext=(0, 2),
@@ -112,6 +112,8 @@ class MainWindow(tkinter.Tk):
 
 
     def platformcheck(self):
+#       Screen scaling breaks this. But this is still an interesting concept to look at and see work.
+#       May start looking into getting dynamic..dynamic settings based on screen res of the spelling.
         configuration = {
             'Darwin' : "1280x720", # Need to do more testing with this res.
             'Linux' : "720x540",
