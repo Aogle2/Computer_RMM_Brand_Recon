@@ -39,15 +39,17 @@ class MainWindow(tkinter.Tk):
 
         lf1 = LabelFrame(self.f1,text="Introduction")
         #Button(lf,text="Refresh").pack()
-        Label(lf1,text="This is the default page to start at.").pack()
-        Label(lf1,text="This app made and re-built by Aaron Ogle").pack()
-        Label(lf1,text="This is a way of showing a dataset using tkinter.").pack()
+        Label(lf1,text="This is the default page to start at.").grid(row=0,column=0)
+        Label(lf1,text="This app made and re-built by Aaron Ogle").grid(row=1,column=0)
+        Label(lf1,text="This is a way of showing a dataset using tkinter.").grid(row=2,column=0)
         lf1.grid(row=0,column=0,pady=10,padx=10)
 
         lf11= LabelFrame(self.f1,text='Computer Specs and Info')
         Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
         Label(lf11,text=f"Memory: {round(psutil.virtual_memory().total/(1024 * 1024),0)} MB").pack()
         Label(lf11,text=f"Disk: ").pack()
+        Label(lf11,text=f"OS type: {platform.system()}").pack()
+
         lf11.grid(row=1,column=0,pady=10,padx=10)
 
 #       Setting up frame2 or "f2"
