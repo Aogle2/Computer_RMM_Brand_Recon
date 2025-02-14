@@ -52,8 +52,10 @@ class MainWindow(tkinter.Tk):
         self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=pd.Series(list(stuff2.keys())),ydata=pd.Series(list(stuff2.values())))
 
 #       Setting up frame3 or "f3"
+
+        #this can be improved with a better view.
         stuff = self.baseQuery("SELECT * FROM manufacturer_view ORDER BY count DESC LIMIT 4;")
-        self.newPlot(title="Test Graph", xlabel=f"Manufacturer", ylabel="Value",parent=self.f3,xdata=stuff['Vendor Name'].astype(str),ydata=stuff['Count'])
+        self.newPlot(title="Test Graph", xlabel=f"Manufacture", ylabel="Value",parent=self.f3,xdata=stuff['Vendor Name'].astype(str),ydata=stuff['Count'])
 
 #       Setting up frame4 or "f4"
 
