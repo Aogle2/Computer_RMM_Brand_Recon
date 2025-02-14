@@ -107,7 +107,7 @@ class MainWindow(tkinter.Tk):
         canvas = FigureCanvasTkAgg(fig, master=parent)
         fig.tight_layout()
         canvas.draw()
-        canvas.get_tk_widget().pack()
+        canvas.get_tk_widget().pack(fill='both',expand=True)
 
 
     def platformcheck(self):
