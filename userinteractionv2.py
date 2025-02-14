@@ -4,7 +4,7 @@ import tkinter
 from tkinter import *
 from tkinter.ttk import Notebook
 
-import pandas
+import psutil
 import matplotlib.pyplot as plt
 import pandas as pd
 from PIL.ImageOps import expand
@@ -35,13 +35,16 @@ class MainWindow(tkinter.Tk):
         self.f4 = self.newFrame(self.notebook,title=options_given[3])
 
 #       Setting up frame1 or "f1"
-        Button(self.f1,text="Refresh").pack()
-        Label(self.f1,text="This is the default page to start at.").pack()
-        Label(self.f1,text="This app made and re-built by Aaron Ogle").pack()
-        Label(self.f1,text="This is a way of showing a dataset using tkinter.").pack()
-        Label(self.f1,text="").pack()
-        Label(self.f1,text=f"OS: {platform.platform()}").pack()
-        Label(self.f1,text=f"Processor: {platform.processor()}").pack()
+
+        lf1 = LabelFrame(self.f1,text="Basic Info")
+        #Button(lf,text="Refresh").pack()
+        Label(lf1,text="This is the default page to start at.").pack()
+        Label(lf1,text="This app made and re-built by Aaron Ogle").pack()
+        Label(lf1,text="This is a way of showing a dataset using tkinter.").pack()
+        Label(lf1,text="").pack()
+        Label(lf1,text=f"OS: {platform.platform()}").pack()
+        Label(lf1,text=f"Processor: {platform.processor()}").pack()
+        lf1.grid(row=0,column=0)
 
 #       Setting up frame2 or "f2"
         stuff2 = {"A": 10, 'B': 20, 'C': 15, "D": 25}
@@ -73,7 +76,7 @@ class MainWindow(tkinter.Tk):
 #   The base query that gets returned as a data frame.
     def baseQuery(self,query):
         connection = sqlite3.connect("main.db")
-        df = pandas.read_sql(query,connection)
+        df = pd.read_sql(query,connection)
         connection.close()
         return df
 
