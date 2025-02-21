@@ -50,16 +50,21 @@ class MainWindow(tkinter.Tk):
         lf11.grid(row=1,column=0,pady=10,padx=10)
 
 #       Setting up frame2 or "f2"
-        stuff2 = {"A": 10, 'B': 20, 'C': 15, "D": 25}
-        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=pd.Series(list(stuff2.keys())),ydata=pd.Series(list(stuff2.values())))
+        frame2_content = self.baseQuery("SELECT * FROM vendor_view;")
+        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=frame2_content[frame2_content.keys()[0]].astype(str),ydata=frame2_content[frame2_content.keys()[1]])
 
 #       Setting up frame3 or "f3"
 
+        #This may need to be rebuilt, something seems off about this.
         #this can be improved with a better view.
-        stuff = self.baseQuery("SELECT * FROM manufacturer_view ORDER BY count DESC LIMIT 4;")
+        stuff = self.baseQuery("SELECT * FROM manufacturer_view ORDER BY count  LIMIT 4;")
         self.newPlot(title="Test Graph", xlabel=f"Manufacture", ylabel="Value",parent=self.f3,xdata=stuff['Vendor Name'].astype(str),ydata=stuff['Count'])
 
 #       Setting up frame4 or "f4"
+        frame4_content = self.baseQuery("SELECT * FROM os_view ORDER BY count LIMIT 4;")
+        frame4_content.fillna("Linux",inplace=True)
+
+        self.newPlot(title="OS Count",xlabel=f"Operating System",ylabel='Value',parent=self.f4,xdata=frame4_content[frame4_content.keys()[0]].astype(str),ydata=frame4_content['Count'])
 
 
 #       Log Testing, I want to see if I can make the window change based on teh size of teh content in each tab.
@@ -115,7 +120,7 @@ class MainWindow(tkinter.Tk):
 #       Screen scaling breaks this. But this is still an interesting concept to look at and see work.
 #       May start looking into getting dynamic..dynamic settings based on screen res of the spelling.
         configuration = {
-            'Darwin' : "1280x720", # Need to do more testing with this res.
+            'Darwin' : "1280x720", # Need to do more testing with this res, Scaling messes with this.
             'Linux' : "720x540",
             'Windows': "720x540",
             'Default' : "640x420"
