@@ -15,7 +15,7 @@ class MainWindow(tkinter.Tk):
         super().__init__()
         self.title("Computer RMM Visual")
         self.platformcheck()
-        self.resizable(height=False,width=False)
+        self.resizable(height=True,width=True)
         self.notebook = Notebook(self)
         self.eval('tk::PlaceWindow . center')
 
@@ -41,6 +41,8 @@ class MainWindow(tkinter.Tk):
         Label(lf1,text="This app made and re-built by Aaron Ogle").grid(row=1,column=0)
         Label(lf1,text="This is a way of showing a dataset using tkinter.").grid(row=2,column=0)
         lf1.grid(row=0,column=0,pady=10,padx=10)
+
+
     #   Setting up labelFrame 2 for frame1
         lf11= LabelFrame(self.f1,text='Basic PC Info')
         Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
@@ -101,7 +103,7 @@ class MainWindow(tkinter.Tk):
         #Work on randomizing colors.
         bars = ax.bar(x=xdata,
                height=ydata,
-               color=['blue', 'green', 'red', 'purple','black','grey'])
+               color=['blue', 'green', 'red', 'purple','black','grey','yellow','orange'])
         for bar in bars:
             height = bar.get_height()
             ax.annotate(f'{height}', xy=(bar.get_x() + bar.get_width() / 2, height), xytext=(0, 2),
