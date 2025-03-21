@@ -53,20 +53,18 @@ class MainWindow(tkinter.Tk):
 
 #       Setting up frame2 or "f2"
         frame2_content = self.baseQuery("SELECT * FROM vendor_view;")
-        self.newPlot(title="Vendor", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=frame2_content[frame2_content.keys()[0]].astype(str),ydata=frame2_content[frame2_content.keys()[1]])
+        self.newPlot(title=frame2_content.columns[0], xlabel=frame2_content.columns[0], ylabel="Value", parent=self.f2, xdata=frame2_content[frame2_content.keys()[0]].astype(str),ydata=frame2_content[frame2_content.keys()[1]])
 
 #       Setting up frame3 or "f3"
-
         #This may need to be rebuilt, something seems off about this.
         #this can be improved with a better view.
-        stuff = self.baseQuery("SELECT * FROM manufacturer_view ORDER BY count  LIMIT 4;")
-        self.newPlot(title="Manufacturer", xlabel=f"Manufacture", ylabel="Value",parent=self.f3,xdata=stuff['Vendor Name'].astype(str),ydata=stuff['Count'])
+        frame3_content = self.baseQuery("SELECT * FROM manufacturer_view ORDER BY count  LIMIT 4;")
+        self.newPlot(title=frame3_content.columns[0], xlabel=frame3_content.columns[0], ylabel="Value",parent=self.f3,xdata=frame3_content['Vendor Name'].astype(str),ydata=frame3_content['Count'])
 
 #       Setting up frame4 or "f4"
         frame4_content = self.baseQuery("SELECT * FROM os_view ORDER BY count LIMIT 4;")
         frame4_content.fillna("Linux",inplace=True)
-
-        self.newPlot(title="OS Count",xlabel=f"Operating System",ylabel='Value',parent=self.f4,xdata=frame4_content[frame4_content.keys()[0]].astype(str),ydata=frame4_content['Count'])
+        self.newPlot(title=frame4_content.columns[1],xlabel=frame4_content.columns[0],ylabel='Value',parent=self.f4,xdata=frame4_content[frame4_content.keys()[0]].astype(str),ydata=frame4_content['Count'])
 
 
 #       Log Testing, I want to see if I can make the window change based on teh size of teh content in each tab.
@@ -83,7 +81,7 @@ class MainWindow(tkinter.Tk):
     def newFrame(self, notebook, title):
         frame = Frame(notebook)
         notebook.add(frame, text=title)
-        print("Notebook Loaded...")
+        print(f"Loaded {title} notebook.")
         return frame  # This returns a frame object
 
 #   The base query that gets returned as a data frame.
@@ -91,7 +89,7 @@ class MainWindow(tkinter.Tk):
         connection = sqlite3.connect("main.db")
         df = pd.read_sql(query,connection)
         connection.close()
-        print("Query Loaded...")
+        print(f"Loaded {df.columns[0]} query.")
         return df
 
 
@@ -118,7 +116,7 @@ class MainWindow(tkinter.Tk):
         fig.tight_layout()
         canvas.draw()
         canvas.get_tk_widget().pack(fill='both',expand=True)
-        print("Plot Loaded...")
+        print(f"Plot Loaded for {title}")
 
 
     def platformcheck(self):
