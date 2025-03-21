@@ -5,6 +5,7 @@ It's also going to have a summary of the database that is used, how many rows, t
 
 The primary notebook is going to have another notebook in Tab 2 named (Statistics) which wil have async functions and each will have a refresh button for each.
 Each tab will be identified and refreshed based on that info alone.
+
 This is a pipe dream below
 I also want to work in a feadback system to the DB (computer info, run time, any errors, error count and how many times something was clicked)
 '''
