@@ -44,7 +44,7 @@ class MainWindow(tkinter.Tk):
 
 
     #   Setting up labelFrame 2 for frame1
-        lf11= LabelFrame(self.f1,text='Basic PC Info')
+        lf11= LabelFrame(self.f1,text='Basic Machine Info')
         Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
         Label(lf11,text=f"Memory: {round(psutil.virtual_memory().total/(1024 * 1024),0)} MB").pack()
         Label(lf11,text=f"OS type: {platform.system()}").pack()
@@ -53,14 +53,14 @@ class MainWindow(tkinter.Tk):
 
 #       Setting up frame2 or "f2"
         frame2_content = self.baseQuery("SELECT * FROM vendor_view;")
-        self.newPlot(title="Test Graph", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=frame2_content[frame2_content.keys()[0]].astype(str),ydata=frame2_content[frame2_content.keys()[1]])
+        self.newPlot(title="Vendor", xlabel="Catagory?", ylabel="Value", parent=self.f2, xdata=frame2_content[frame2_content.keys()[0]].astype(str),ydata=frame2_content[frame2_content.keys()[1]])
 
 #       Setting up frame3 or "f3"
 
         #This may need to be rebuilt, something seems off about this.
         #this can be improved with a better view.
         stuff = self.baseQuery("SELECT * FROM manufacturer_view ORDER BY count  LIMIT 4;")
-        self.newPlot(title="Test Graph", xlabel=f"Manufacture", ylabel="Value",parent=self.f3,xdata=stuff['Vendor Name'].astype(str),ydata=stuff['Count'])
+        self.newPlot(title="Manufacturer", xlabel=f"Manufacture", ylabel="Value",parent=self.f3,xdata=stuff['Vendor Name'].astype(str),ydata=stuff['Count'])
 
 #       Setting up frame4 or "f4"
         frame4_content = self.baseQuery("SELECT * FROM os_view ORDER BY count LIMIT 4;")
@@ -83,6 +83,7 @@ class MainWindow(tkinter.Tk):
     def newFrame(self, notebook, title):
         frame = Frame(notebook)
         notebook.add(frame, text=title)
+        print("Notebook Loaded...")
         return frame  # This returns a frame object
 
 #   The base query that gets returned as a data frame.
@@ -90,6 +91,7 @@ class MainWindow(tkinter.Tk):
         connection = sqlite3.connect("main.db")
         df = pd.read_sql(query,connection)
         connection.close()
+        print("Query Loaded...")
         return df
 
 
@@ -116,6 +118,7 @@ class MainWindow(tkinter.Tk):
         fig.tight_layout()
         canvas.draw()
         canvas.get_tk_widget().pack(fill='both',expand=True)
+        print("Plot Loaded...")
 
 
     def platformcheck(self):
