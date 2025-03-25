@@ -36,6 +36,8 @@ Tables that are needed
     Table---Machine_manufactor
 
     Table---Feedback
+        |---id
+        |
 
 
 -----------------------------------------------------------------------------------------
