@@ -27,9 +27,15 @@ The Primary Notebook will have Two Sub-Notebooks
 Need to re-design the Database as well for this.
 
 Tables that are needed
-    Table---device_info
+    Table---device
         |----id
         |----
+
+    Table---Vendor
+
+    Table---Machine_manufactor
+
+    Table---Feedback
 
 
 -----------------------------------------------------------------------------------------
