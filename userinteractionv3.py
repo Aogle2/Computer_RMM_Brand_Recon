@@ -6,6 +6,8 @@ It's also going to have a summary of the database that is used, how many rows, t
 The primary notebook is going to have another notebook in Tab 2 named (Statistics) which wil have async functions and each will have a refresh button for each.
 Primary Notebook will be "About" and Another will be "Statistics"
 
+The Primary Notebook will have Two Sub-Notebooks
+
 ---About - The default tab to go to when program is started.
     |
     -----System Info, With export csv/excel Button (Asynced)
@@ -21,6 +23,15 @@ Primary Notebook will be "About" and Another will be "Statistics"
     ----Manufacture (view), with Refresh Button and export csv/excel button
     |
     ----Operating System Count (view), with Refresh Button and export csv/excel button
+-----------------------------------------------------------------------------------------
+Need to re-design the Database as well for this.
+
+Tables that are needed
+    Table---device_info
+        |----id
+        |----
+
+
 -----------------------------------------------------------------------------------------
 
 About will have System info and Database Info as well as Something about the program author.
