@@ -56,7 +56,7 @@ def osview():
     plt.show()
 
 def manufacturersummary():
-    query = basequery("SELECT vName as [Vendor Name], COUNT(vtype) as Count FROM Model JOIN Vendor ON Model.v_id = Vendor.v_id GROUP BY vType ORDER BY (COUNT(vName)) LIMIT 5")
+    query = basequery("SELECT vName as [Vendor Name], COUNT(vtype) as Count FROM Model JOIN Vendor ON Model.v_id = Vendor.v_id GROUP BY vType ORDER BY (COUNT(vName)) LIMIT 3")
     query['Vendor Name'] = query['Vendor Name'].astype(str)
     fig, ax = plt.subplots()
     bars = ax.bar(query['Vendor Name'], query['Count'])
