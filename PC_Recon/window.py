@@ -41,12 +41,8 @@ Each tab will be identified and refreshed based on that info alone.
 This is a pipe dream below
 I also want to work in a feadback system to the DB (computer info, run time, any errors, error count and how many times something was clicked)
 '''
-import tkinter
-
-
-class Mainwindow(tkinter):
-    def __init__(self):
-        super().__init__()
+from  tkinter import *
+from tkinter.ttk import *
 
 
 #The thing to keep this from running right off the bat..
