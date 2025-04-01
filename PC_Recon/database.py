@@ -50,7 +50,10 @@ import tkinter
 
 
 
-#Need to setup the data model for sqlalchemy to work with.
+#Setup the data model for sqlalchemy to work with.
+#Setup the method for the data to be inserted, selected and updated.
+#Setup a method to change DBs.
+#Setup the method to import and export.
 
 
 

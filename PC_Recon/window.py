@@ -20,6 +20,16 @@ The Primary Notebook will have Two Sub-Notebooks
     ----Manufacture (view), with Refresh Button and export csv/excel button
     |
     ----Operating System Count (view), with Refresh Button and export csv/excel button
+
+--Settings
+    |
+    ----System Settings
+        |Will have Save location for any current settings
+        |Will have settings for Style and stuff for the windows
+        |Will have an export and import settings as well.
+
+    ----Database Settings
+        |TBA
 -----------------------------------------------------------------------------------------
 
 About will have System info and Database Info as well as Something about the program author.
@@ -31,8 +41,12 @@ Each tab will be identified and refreshed based on that info alone.
 This is a pipe dream below
 I also want to work in a feadback system to the DB (computer info, run time, any errors, error count and how many times something was clicked)
 '''
+import tkinter
 
 
+class Mainwindow(tkinter):
+    def __init__(self):
+        super().__init__()
 
 
 #The thing to keep this from running right off the bat..

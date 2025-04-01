@@ -9,3 +9,20 @@ MatPlotlib - used to plot our data.
 Pandas - I am going to try to not use this as much but this is used to get our data in a usable sense for matplotlib.
 '''
 from window import *
+from database import *
+from configuration import *
+from charts import *
+
+
+
+
+
+
+
+
+
+
+
+#The thing to keep this from running right off the bat..
+if __name__ == "__main__":
+    pass
