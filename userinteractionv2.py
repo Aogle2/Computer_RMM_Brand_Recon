@@ -45,7 +45,7 @@ class MainWindow(tkinter.Tk):
 
     #   Setting up labelFrame 2 for frame1
         lf11= LabelFrame(self.f1,text='Basic Machine Info')
-        Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']}").pack()
+        Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']} x {psutil.cpu_count()}").pack()
         Label(lf11,text=f"Memory: {round(psutil.virtual_memory().total/(1024 * 1024),0)} MB").pack()
         Label(lf11,text=f"OS type: {platform.system()}").pack()
 
