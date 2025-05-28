@@ -45,15 +45,10 @@ But in future builds, this can be used for feedback an org level stuffs.
         |----boot_time
         |----os_install_date
 """
-import sqlalchemy as sqla
-import tkinter
+import sqlite3
 
 
-
-#Setup the data model for sqlalchemy to work with.
-#Setup the method for the data to be inserted, selected and updated.
-#Setup a method to change DBs.
-#Setup the method to import and export.
+#This is going to be as strict as possible to only using sqlite3 module as it's built in.
 
 
 
