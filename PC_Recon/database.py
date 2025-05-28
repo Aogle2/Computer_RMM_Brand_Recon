@@ -40,7 +40,6 @@ But in future builds, this can be used for feedback an org level stuffs.
         |----os_id_fk
         |----run_time
         |----last_error
-        |----leap_year
         |----python_ver
         |----boot_time
         |----os_install_date
