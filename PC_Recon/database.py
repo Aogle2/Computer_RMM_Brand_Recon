@@ -51,9 +51,6 @@ import sqlite3
 #This is going to be as strict as possible to only using sqlite3 module as it's built in.
 
 
-
-
-
 #The thing to keep this from running right off the bat..
 if __name__ == "__main__":
     pass
