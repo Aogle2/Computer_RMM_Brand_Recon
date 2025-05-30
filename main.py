@@ -53,7 +53,7 @@ class App(tk.Tk):
 
 #   Method for checking what drop down is selected.
 
-#   Method to make a radio button. https://www.pythontutorial.net/tkinter/tkinter-radio-button/, another cool one: https://ultrapythonic.com/tkinter-radiobutton/
+#   Dynamic radio buttons using pack https://www.pythontutorial.net/tkinter/tkinter-radio-button/, another cool one: https://ultrapythonic.com/tkinter-radiobutton/
 
 #   Method to make the dropdown. https://pythonassets.com/posts/drop-down-list-combobox-in-tk-tkinter/
 
@@ -71,7 +71,10 @@ class App(tk.Tk):
 #   Method to make a Pie Chart
 
 #   Method to handle events : https://stackoverflow.com/questions/32289175/list-of-all-tkinter-events
+'''
+https://pythonexamples.org/python-tkinter-radiobutton-check-if-an-option-is-selected/
 
+'''
 
 
 if __name__ == '__main__':
