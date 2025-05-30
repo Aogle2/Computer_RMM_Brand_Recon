@@ -39,7 +39,10 @@ import tkinter as tk
 
 
 class app(tk.Tk):
-    pass
+    def __init__(self):
+        super().__init__()
+        self.title("Computer RMM")
+        self.geometry("800x600")
 
 
 #   Method for checking what radio button is clicked.
@@ -59,3 +62,9 @@ class app(tk.Tk):
 #   Method to make a Histogram
 
 #   Method to make a Pie Chart
+
+
+
+if __name__ == '__main__':
+    Window = app()
+    app.mainloop()
