@@ -48,4 +48,14 @@ class app(tk.Tk):
 
 #   Method to make a radio button. https://www.pythontutorial.net/tkinter/tkinter-radio-button/
 
-#   Method to make the drop down. https://pythonassets.com/posts/drop-down-list-combobox-in-tk-tkinter/
+#   Method to make the dropdown. https://pythonassets.com/posts/drop-down-list-combobox-in-tk-tkinter/
+
+#   Method to make Notebook
+
+#   Method to make a Frame
+
+#   Method to make the Bar Chart
+
+#   Method to make a Histogram
+
+#   Method to make a Pie Chart
