@@ -45,13 +45,16 @@ class App(tk.Tk):
         self.title("RMM Metric")
         self.geometry("800x600")
 
-    # Make the notebook, this is generic for the entire program, and we only need one so far.
+    #   Make the notebook, this is generic for the entire program, and we only need one so far.
         self.notebook = Notebook(self)
+    #   Place the notebook on the left most grid place, we should only need one.
+        self.notebook.grid(row=0,column =0)
+
+    # Load the frame.
+        self.Frame1 = self.newFrame(self.notebook,title="Main Window")
 
 
 #   Method for checking what radio button is clicked.
-
-#   Method for checking what drop down is selected.
 
 #   Dynamic radio buttons using pack https://www.pythontutorial.net/tkinter/tkinter-radio-button/, another cool one: https://ultrapythonic.com/tkinter-radiobutton/
 
@@ -69,6 +72,8 @@ class App(tk.Tk):
 #   Method to make a Histogram
 
 #   Method to make a Pie Chart
+
+#   Method to do the query and return a dictionary
 
 #   Method to handle events : https://stackoverflow.com/questions/32289175/list-of-all-tkinter-events
 '''
