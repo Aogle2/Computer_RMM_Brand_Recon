@@ -42,7 +42,7 @@ from tkinter.ttk import Notebook, Frame, Radiobutton
 class App(Tk):
     def __init__(self):
         super().__init__()
-        self.title("RMM Metric")
+        self.title("RMM Metrics")
         self.geometry("800x600")
 
 #   Method for checking what radio button is clicked.
