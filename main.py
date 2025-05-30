@@ -36,6 +36,7 @@ Features I want to add
 #Class that has the core tkinter module
 
 import tkinter as tk
+from tkinter.ttk import Notebook, Frame
 
 
 class App(tk.Tk):
@@ -43,6 +44,9 @@ class App(tk.Tk):
         super().__init__()
         self.title("RMM Metric")
         self.geometry("800x600")
+
+    # Make the notebook, this is generic for the entire program, and we only need one so far.
+        self.notebook = Notebook(self)
 
 
 #   Method for checking what radio button is clicked.
@@ -53,9 +57,11 @@ class App(tk.Tk):
 
 #   Method to make the dropdown. https://pythonassets.com/posts/drop-down-list-combobox-in-tk-tkinter/
 
-#   Method to make Notebook
-
 #   Method to make a Frame
+    def newFrame(self, notebook, title):
+        frame = Frame(notebook)
+        notebook.add(frame, text = title)
+        return frame
 
 #   Method to make the Bar Chart
 
