@@ -45,26 +45,13 @@ class App(Tk):
         self.title("RMM Metric")
         self.geometry("800x600")
 
-    #   Make the notebook, this is generic for the entire program, and we only need one so far.
-        self.notebook = Notebook(self)
-    #   Place the notebook on the left most grid place, we should only need one.
-        self.notebook.grid(row=0,column =0)
-
-    #   Load the frame.
-        self.Frame1 = self.newFrame(self.notebook,title="Main Window")
-
 #   Method for checking what radio button is clicked.
 
 #   Dynamic radio buttons using pack https://www.pythontutorial.net/tkinter/tkinter-radio-button/, another cool one: https://ultrapythonic.com/tkinter-radiobutton/
+        self.radioButton1 = Radiobutton(self, text="Computers")
+        self.radioButton1.grid(row=0, column=0)
 
 #   Method to make the dropdown. https://pythonassets.com/posts/drop-down-list-combobox-in-tk-tkinter/
-
-#   Method to make a Frame
-    def newFrame(self, notebook, title):
-        #Create our frame object and assign it to the notebook.
-        frame = Frame(notebook)
-        notebook.add(frame, text = title)
-        return frame
 
 #   Method to make the Bar Chart
 
