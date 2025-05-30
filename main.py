@@ -36,7 +36,7 @@ Features I want to add
 #Class that has the core tkinter module
 
 import tkinter as tk
-from tkinter.ttk import Notebook, Frame
+from tkinter.ttk import Notebook, Frame, Radiobutton
 
 
 class App(tk.Tk):
@@ -69,6 +69,8 @@ class App(tk.Tk):
 #   Method to make a Histogram
 
 #   Method to make a Pie Chart
+
+#   Method to handle events : https://stackoverflow.com/questions/32289175/list-of-all-tkinter-events
 
 
 
