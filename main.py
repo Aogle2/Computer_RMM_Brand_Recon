@@ -42,6 +42,10 @@ class app(tk.Tk):
     pass
 
 
-#   Method for checking what radio button is clicked
+#   Method for checking what radio button is clicked.
 
 #   Method for checking what drop down is selected.
+
+#   Method to make a radio button. https://www.pythontutorial.net/tkinter/tkinter-radio-button/
+
+#   Method to make the drop down. https://pythonassets.com/posts/drop-down-list-combobox-in-tk-tkinter/
