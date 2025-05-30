@@ -35,11 +35,11 @@ Features I want to add
 
 #Class that has the core tkinter module
 
-import tkinter as tk
+from tkinter import *
 from tkinter.ttk import Notebook, Frame, Radiobutton
 
 
-class App(tk.Tk):
+class App(Tk):
     def __init__(self):
         super().__init__()
         self.title("RMM Metric")
@@ -50,9 +50,8 @@ class App(tk.Tk):
     #   Place the notebook on the left most grid place, we should only need one.
         self.notebook.grid(row=0,column =0)
 
-    # Load the frame.
+    #   Load the frame.
         self.Frame1 = self.newFrame(self.notebook,title="Main Window")
-
 
 #   Method for checking what radio button is clicked.
 
