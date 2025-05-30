@@ -31,3 +31,17 @@ Features I want to add
     A. Selectable Charts with Selectable Data via drop down selections.
 
 '''
+
+
+#Class that has the core tkinter module
+
+import tkinter as tk
+
+
+class app(tk.Tk):
+    pass
+
+
+#   Method for checking what radio button is clicked
+
+#   Method for checking what drop down is selected.
