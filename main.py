@@ -38,10 +38,10 @@ Features I want to add
 import tkinter as tk
 
 
-class app(tk.Tk):
+class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Computer RMM")
+        self.title("RMM Metric")
         self.geometry("800x600")
 
 
@@ -66,5 +66,5 @@ class app(tk.Tk):
 
 
 if __name__ == '__main__':
-    Window = app()
-    app.mainloop()
+    Window = App()
+    Window.mainloop()
