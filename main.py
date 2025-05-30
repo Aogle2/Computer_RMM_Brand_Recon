@@ -53,12 +53,13 @@ class App(tk.Tk):
 
 #   Method for checking what drop down is selected.
 
-#   Method to make a radio button. https://www.pythontutorial.net/tkinter/tkinter-radio-button/
+#   Method to make a radio button. https://www.pythontutorial.net/tkinter/tkinter-radio-button/, another cool one: https://ultrapythonic.com/tkinter-radiobutton/
 
 #   Method to make the dropdown. https://pythonassets.com/posts/drop-down-list-combobox-in-tk-tkinter/
 
 #   Method to make a Frame
     def newFrame(self, notebook, title):
+        #Create our frame object and assign it to the notebook.
         frame = Frame(notebook)
         notebook.add(frame, text = title)
         return frame
