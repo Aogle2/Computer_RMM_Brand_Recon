@@ -1,6 +1,8 @@
 ## This is the original project for Code:Louisville
 I want to keep this here as a reminder to myself and to show others that you can always improve no matter what is being built.
 
+Look at Revision-2 for some more progress on code organization and improvements.
+
 ## Project Intro
 Hello, this little project is a demostration on how to present data from a Database.
 Just a small idea on how presenting data can be done and should give an idea the diversity of Operating Systems, Vendors and Manufacturers.
