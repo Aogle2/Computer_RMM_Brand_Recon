@@ -68,6 +68,27 @@ https://pythonexamples.org/python-tkinter-radiobutton-check-if-an-option-is-sele
 '''
 
 
+'''
+Create classes for each element and widget that is needing to be used.
+Will also use a lot of: https://www.geeksforgeeks.org/python/multiple-inheritance-in-python/
+May also need to use: https://www.geeksforgeeks.org/python/data-abstraction-in-python/
+
+Create a Notebook
+Create a Frame
+Create a Button
+Create a Radiobutton
+
+
+Class to Monitor Events
+https://pythonguides.com/python-tkinter-events/
+
+
+
+
+'''
+
 if __name__ == '__main__':
     Window = App()
     Window.mainloop()
+
+
