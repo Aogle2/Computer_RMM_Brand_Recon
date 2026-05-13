@@ -1,3 +1,4 @@
+## Python 3.14 REALLY Changes how Matplotlib displays things this is going to be adjusted to compensate for this.
 ## This is the original project for Code:Louisville
 I want to keep this here as a reminder to myself and to show others that you can always improve no matter what is being built.
 
