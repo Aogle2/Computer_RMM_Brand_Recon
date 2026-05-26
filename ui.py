@@ -58,6 +58,8 @@ class MyFrame(wx.Frame):
 
 
         exitoption.SetBitmap(wx.Bitmap(scaled))
+        self.Bind(wx.EVT_MENU,self.on_quit_program,id=exitoption.GetId())
+
         menubar.Append(filemenu,'File')
 
         options = wx.Menu()
@@ -115,6 +117,11 @@ class MyFrame(wx.Frame):
 
         self.Centre()
         self.Show()
+
+    def on_quit_program(self,event):
+        self.Close(True)
+
+
 
     def button_on_click(self, event):
         result = wx.MessageBox(

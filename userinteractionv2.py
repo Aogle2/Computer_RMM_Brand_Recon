@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import psutil
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.pyplot import title
+
 
 class MainWindow(tkinter.Tk):
     def __init__(self):
@@ -33,6 +35,7 @@ class MainWindow(tkinter.Tk):
         self.f3 = self.newFrame(self.notebook,title=options_given[2])
         self.f4 = self.newFrame(self.notebook,title=options_given[3])
 
+
 #       Setting up frame1 or "f1"
 
     #   Setting up labelFrame for frame1
@@ -48,6 +51,8 @@ class MainWindow(tkinter.Tk):
         Label(lf11,text=f"CPU: {cpuinfo.get_cpu_info()['brand_raw']} x {psutil.cpu_count()}").pack()
         Label(lf11,text=f"Memory: {round(psutil.virtual_memory().total/(1024 * 1024),0)} MB").pack()
         Label(lf11,text=f"OS type: {platform.system()}").pack()
+        Label(lf11,text="Target Python Version: 3.12").pack()
+        Label(lf11,text=f"Actual Python Version: {platform.python_version()}").pack()
 
         lf11.grid(row=1,column=0,pady=10,padx=10)
 
