@@ -10,6 +10,9 @@ MacOS has some more setup from what I've read, I am going to look into this a li
 Running this on "MacOS Tahoe", M1 Max Macbook Pro
 
 """
+import os
+import platform
+
 import wx
 """
 
@@ -23,48 +26,104 @@ frame = wx.Frame(None, title="Hello world!")
 frame.Show(True)
 app.MainLoop()
 """
-
 import wx
 
 class Tab(wx.Panel):
-    def __init__(self, parent,label):
-        wx.Panel.__init__(self, parent, -1)
+    def __init__(self, parent, label):
         super().__init__(parent)
+
         sizer = wx.BoxSizer(wx.VERTICAL)
-        text = wx.StaticText(self, 0, label=label)
-        sizer.Add(text, 0, wx.ALL| wx.CENTER, 10)
+
+        text = wx.StaticText(self, label=label)
+        sizer.Add(text, 0, wx.ALL | wx.CENTER, 10)
+
         self.SetSizer(sizer)
+
 
 class MyFrame(wx.Frame):
     def __init__(self):
-        super().__init__(None,title="WxTest", size=(400,300))
+        super().__init__(None, title="WxTest", size=(400, 300))
 
-        #Make our notebook (tab control), this is teh tab container
+        # Notebook (tab container)
         notebook = wx.Notebook(self)
 
-    # Each tab is a wx.panel
-    # Can bind events like "EVT_NOTEBOOK_PAGE_CHANGED" to detect tab changes.
-        # Create a tab page(s)
+        menubar = wx.MenuBar()
+        filemenu = wx.Menu()
+
+        filemenu.Append(wx.ID_ANY, "&File", "&Open a file")
+        filemenu.AppendSeparator()
+        filemenu.Append(wx.ID_ANY, "&Exit", "&Exit")
+
+        menubar.Append(filemenu,'File')
+
+        options = wx.Menu()
+        options.AppendCheckItem(wx.ID_ANY,'Settings')
+        options.AppendCheckItem(wx.ID_ANY,'Appearance')
+
+
+
+        menubar.Append(options, 'Options')
+
+        self.SetMenuBar(menubar)
+
+        # Create tabs
         tab1 = Tab(notebook, "Tab 1")
         tab2 = Tab(notebook, "Tab 2")
+        tab3 = Tab(notebook, "Tab 3")
+        tab4 = Tab(notebook, "Tab 4")
 
-        button = wx.Button(tab1, -1, "Button 1")
+        # Buttons
+        button1 = wx.Button(tab1, label="Button 1")
+        button2 = wx.Button(tab2, label="Button 2", pos=(1, 2))
 
+        self.rb1 = wx.RadioButton(tab1, label="Radio Button 1")
+        self.rb2 = wx.RadioButton(tab1, label="Radio Button 2")
+        self.rb3 = wx.RadioButton(tab1, label="Radio Button 3")
 
-        Button2 = wx.Button(tab2, -1, "Button 2",pos=(100,100))
+    # This is what makes that little box thing that you see in old Windows Task Manager.
+        self.rbox1 = wx.RadioBox(tab2, label="Radio Box Thing 1", choices=["Option 1", "Option 2", platform.machine()], majorDimension=1,style=wx.RA_SPECIFY_COLS)
 
-        #Add our Notebook things
+        # Add button to tab1's sizer
+        tab1.GetSizer().Add(button1, 0, wx.ALL | wx.CENTER, 10)
+
+        # Bind event
+        button1.Bind(wx.EVT_BUTTON, self.button_on_click)
+
+        tab1.GetSizer().Add(self.rb1, 1, wx.ALL | wx.CENTER, 10)
+        tab1.GetSizer().Add(self.rb2, 2, wx.ALL | wx.CENTER, 10)
+        tab1.GetSizer().Add(self.rb3, 1, wx.CENTER, 10)
+
+        tab2.GetSizer().Add(self.rbox1, 2, wx.ALL | wx.CENTER, 15)
+
+        # Add tabs to notebook
         notebook.AddPage(tab1, "Tab 1")
         notebook.AddPage(tab2, "Tab 2")
+        notebook.AddPage(tab3, "Tab 3")
+        notebook.AddPage(tab4, "Tab 4")
 
 
-        #Layout
+
+        # Layout
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(notebook, 1, wx.EXPAND)
+
         self.SetSizer(sizer)
 
         self.Centre()
         self.Show()
+
+    def button_on_click(self, event):
+        result = wx.MessageBox(
+            "Do you want to continue?",
+            "Question",
+            wx.YES_NO | wx.ICON_QUESTION
+        )
+
+        if result == wx.YES:
+            print("User clicked YES")
+        else:
+            print("User clicked NO")
+
 
 if __name__ == '__main__':
     app = wx.App()
