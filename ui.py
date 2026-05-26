@@ -52,8 +52,12 @@ class MyFrame(wx.Frame):
 
         filemenu.Append(wx.ID_ANY, "&File", "&Open a file")
         filemenu.AppendSeparator()
-        filemenu.Append(wx.ID_ANY, "&Exit", "&Exit")
+        exitoption = filemenu.Append(wx.ID_ANY, "&Exit", "&Exit")
 
+        scaled = wx.Image("x.png",wx.BITMAP_TYPE_ANY).Scale(16,16,wx.IMAGE_QUALITY_HIGH)
+
+
+        exitoption.SetBitmap(wx.Bitmap(scaled))
         menubar.Append(filemenu,'File')
 
         options = wx.Menu()
