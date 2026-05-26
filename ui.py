@@ -27,6 +27,7 @@ frame.Show(True)
 app.MainLoop()
 """
 import wx
+import psutil
 
 class Tab(wx.Panel):
     def __init__(self, parent, label):
@@ -78,6 +79,12 @@ class MyFrame(wx.Frame):
         tab3 = Tab(notebook, "Tab 3")
         tab4 = Tab(notebook, "Tab 4")
 
+        self.label = wx.StaticText(tab3,label="Starting up...", pos=(20,20))
+
+        self.timer = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER,self.on_update,self.timer)
+        self.timer.Start(100)
+
         # Buttons
         button1 = wx.Button(tab1, label="Button 1")
         button2 = wx.Button(tab2, label="Button 2", pos=(1, 2))
@@ -121,7 +128,11 @@ class MyFrame(wx.Frame):
     def on_quit_program(self,event):
         self.Close(True)
 
+    def on_update(self,event):
+        self.label.SetLabel(f"{self.get_current_memory():2f}")
 
+    def get_current_memory(self):
+        return psutil.Process(os.getpid()).memory_info().rss
 
     def button_on_click(self, event):
         result = wx.MessageBox(
