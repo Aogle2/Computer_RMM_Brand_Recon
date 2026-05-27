@@ -9,6 +9,10 @@ Another look into: https://wiki.wxpython.org/How%20to%20Learn%20wxPython
 MacOS has some more setup from what I've read, I am going to look into this a little bit later.
 Running this on "MacOS Tahoe", M1 Max Macbook Pro
 
+
+
+Ubuntu requires a bit more pre-work before it can work, maybe look into how all this can be pakaged in one go for a client?
+Ubuntu will require a bit more work as it needs GTK+ installed along with some other stuff.
 """
 import os
 import platform
