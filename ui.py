@@ -120,6 +120,7 @@ class MyFrame(wx.Frame):
         
         """
 
+################################################BOX SIZERS
 
         infoBox = wx.StaticBox(tab4, label="System Information")
         info_sizer = wx.StaticBoxSizer(infoBox,wx.VERTICAL)
@@ -137,6 +138,7 @@ class MyFrame(wx.Frame):
 
         # Bind event
         button1.Bind(wx.EVT_BUTTON, self.button_on_click)
+        button2.Bind(wx.EVT_BUTTON, self.button_on_click)
 
         tab1.GetSizer().Add(self.rb1, 0, wx.ALL | wx.LEFT, 10)
         tab1.GetSizer().Add(self.rb2, 0, wx.ALL | wx.LEFT, 10)
