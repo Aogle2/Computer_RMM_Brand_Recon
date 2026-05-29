@@ -81,7 +81,7 @@ class MyFrame(wx.Frame):
         tab1 = Tab(notebook, "Tab 1")
         tab2 = Tab(notebook, "Tab 2")
         tab3 = Tab(notebook, "Tab 3")
-        tab4 = Tab(notebook, "Tab 4")
+        tab4 = Tab(notebook, '')
 
         self.label = wx.StaticText(tab3,label="Starting up...", pos=(20,20))
 
@@ -100,6 +100,38 @@ class MyFrame(wx.Frame):
     # This is what makes that little box thing that you see in old Windows Task Manager.
         self.rbox1 = wx.RadioBox(tab2, label="Radio Box Thing 1", choices=["Option 1", "Option 2", platform.machine()], majorDimension=1,style=wx.RA_SPECIFY_COLS)
 
+
+        """
+        Create our Info box thing and the parent that is going to house this is "Tab4", which their parent is the notebook.
+        info_box = wx.StaticBox(tab4, label="System Information")
+        
+        This is our container itself, vertical means that this will arrange things vertically 
+        info_sizer = wx.StaticBoxSizer(info_box, wx.VERTICAL)
+
+        These are our controls or  content to the container to the container
+        label1 = wx.StaticText(tab4, label="Hostname: server01")
+        label2 = wx.StaticText(tab4, label="CPU: Intel Xeon")
+        label3 = wx.StaticText(tab4, label="RAM: 64 GB")
+
+        info_sizer.Add(label1, 0, wx.ALL, 5)
+        info_sizer.Add(label2, 0, wx.ALL, 5)
+        info_sizer.Add(label3, 0, wx.ALL, 5)
+
+        
+        """
+
+
+        infoBox = wx.StaticBox(tab4, label="System Information")
+        info_sizer = wx.StaticBoxSizer(infoBox,wx.VERTICAL)
+
+
+        hostname = wx.StaticText(tab4,label=f"Hostname: {platform.node()}")
+        memory = wx.StaticText(tab4,label=f"Memory: {psutil.virtual_memory().percent}%")
+
+        info_sizer.Add(hostname, 0, wx.ALL | wx.CENTER, 10)
+        info_sizer.Add(memory, 0, wx.CENTER, 10)
+
+
         # Add button to tab1's sizer
         tab1.GetSizer().Add(button1, 0, wx.ALL | wx.CENTER, 10)
 
@@ -109,20 +141,26 @@ class MyFrame(wx.Frame):
         tab1.GetSizer().Add(self.rb1, 1, wx.ALL | wx.CENTER, 10)
         tab1.GetSizer().Add(self.rb2, 2, wx.ALL | wx.CENTER, 10)
         tab1.GetSizer().Add(self.rb3, 1, wx.CENTER, 10)
-
         tab2.GetSizer().Add(self.rbox1, 2, wx.ALL | wx.CENTER, 15)
+        tab4.GetSizer().Add(info_sizer, 0, wx.ALL | wx.EXPAND, 10)
+
+
+
 
         # Add tabs to notebook
         notebook.AddPage(tab1, "Tab 1")
         notebook.AddPage(tab2, "Tab 2")
         notebook.AddPage(tab3, "Tab 3")
-        notebook.AddPage(tab4, "Tab 4")
+        notebook.AddPage(tab4, "System Information")
+
+
 
 
 
         # Layout
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(notebook, 1, wx.EXPAND)
+
 
         self.SetSizer(sizer)
 
@@ -135,12 +173,13 @@ class MyFrame(wx.Frame):
     def on_update(self,event):
         self.label.SetLabel(f"{self.get_current_memory():2f}")
 
+
     def get_current_memory(self):
         return psutil.Process(os.getpid()).memory_info().rss
 
     def button_on_click(self, event):
         result = wx.MessageBox(
-            "Do you want to continue?",
+            f"Do you want to continue?",
             "Question",
             wx.YES_NO | wx.ICON_QUESTION
         )
