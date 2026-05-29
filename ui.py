@@ -140,11 +140,12 @@ class MyFrame(wx.Frame):
         button1.Bind(wx.EVT_BUTTON, self.button_on_click)
         button2.Bind(wx.EVT_BUTTON, self.button_on_click)
 
+        # Add the other sizers
         tab1.GetSizer().Add(self.rb1, 0, wx.ALL | wx.LEFT, 10)
         tab1.GetSizer().Add(self.rb2, 0, wx.ALL | wx.LEFT, 10)
         tab1.GetSizer().Add(self.rb3, 0, wx.ALL | wx.LEFT, 10)
         tab2.GetSizer().Add(self.rbox1, 2, wx.ALL | wx.CENTER, 15)
-        tab4.GetSizer().Add(info_sizer, 0, wx.ALL | wx.EXPAND, 10)
+        tab4.GetSizer().Add(info_sizer, 0, wx.ALL | wx.LEFT, 10)
 
 
 
