@@ -127,10 +127,15 @@ class MyFrame(wx.Frame):
 
 
         hostname = wx.StaticText(tab4,label=f"Hostname: {platform.node()}")
-        memory = wx.StaticText(tab4,label=f"Memory: {psutil.virtual_memory().percent}%")
+        memory = wx.StaticText(tab4,label=f"System Memory Usage: {psutil.virtual_memory().percent}%")
+        PythonVersion = wx.StaticText(tab4,label=f"Python Version: {platform.python_version()}")
 
+        # .Add(widget, proportion (0 don't stretch, 1 stretch,wx.All apply the boarder on all sides. wx.CENTER center the widget
+        # the | is bitwise OR
+        # 10 border size
         info_sizer.Add(hostname, 0, wx.ALL | wx.CENTER, 10)
-        info_sizer.Add(memory, 0, wx.CENTER, 10)
+        info_sizer.Add(memory, 0, wx.ALL |wx.CENTER, 10)
+        info_sizer.Add(PythonVersion,0,wx.ALL |wx.CENTER, 10)
 
 
         # Add button to tab1's sizer
