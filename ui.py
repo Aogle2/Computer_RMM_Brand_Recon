@@ -121,8 +121,10 @@ class MyFrame(wx.Frame):
         """
 
 ################################################BOX SIZERS
-
+    # Place our info box as a Static box in tab4
         infoBox = wx.StaticBox(tab4, label="System Information")
+
+        # Throw that same box in a box sixer
         info_sizer = wx.StaticBoxSizer(infoBox,wx.VERTICAL)
 
 
